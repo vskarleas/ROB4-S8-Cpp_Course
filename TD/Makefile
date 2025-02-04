@@ -84,14 +84,14 @@ class_rectangle.o : class_rectangle.cpp
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-class_rectangle_with_namespace.o : class_rectangle_with_namespace.cpp class_rectangle_with_namespace.hpp
+parallelograms.o : parallelograms.cpp parallelograms.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
 	@echo "---------------------------------------------"
 	$(CCplus) -c $(COMPILOPTSplus) $< -o $@
 
-main.o : main.cpp class_rectangle_with_namespace.hpp
+main.o : main.cpp parallelograms.hpp
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Compilation du module "$*
@@ -120,7 +120,7 @@ class_rectangle : class_rectangle.o
 	@echo "---------------------------------------------"
 	$(CCplus) $^ $(OPTIONS) -o $@
 
-main : class_rectangle_with_namespace.o main.o
+main : parallelograms.o main.o
 	@echo ""
 	@echo "---------------------------------------------"
 	@echo "Creation de l'executable "$@

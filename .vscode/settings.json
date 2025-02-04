@@ -2,6 +2,7 @@
     "files.associations": {
         "*.embeddedhtml": "html",
         "rectangle.h": "c",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "ostream": "cpp"
     }
 }
