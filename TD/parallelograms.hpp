@@ -51,7 +51,7 @@ namespace Geometry
     void afficher_aire_et_perimetre_carre(const Square &s);
     void afficher_compteur_carre();
 
-    template <typename T>
+    template <typename T> // Design pattern - Να το δείς και να το καταλάβεις
     class Pair
     {
         private:
