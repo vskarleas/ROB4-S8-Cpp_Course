@@ -19,16 +19,21 @@ class Matrix
         ~Matrix(); // Destructor
 
         /* Reading access at the cell (row, col) */
-        const type& operator()(const int &row, const int &col); // The syntax is simple: in the beginnign is what we return and then we declare the operator
+        type& operator()(const int &row, const int &col); // The syntax is simple: in the beginnign is what we return and then we declare the operator
+
+        // We are providing a const and a non const version of the operator() to allow for reading and writing access to the matrix
+        const type& operator()(const int &row, const int &col) const;
+
+
         int get_rows() const;
         int get_cols() const;
 
         /* Defining the actions for the different operations */
-        Matrix<type> operator+(const Matrix<type> &m) const;
-        Matrix<type> operator-(const Matrix<type> &m) const;
-        Matrix<type> operator*(const Matrix<type> &m) const;
-        Matrix<type> operator*(const type &scalar) const;
-        Matrix<type> operator=(const Matrix<type> &m) const;
+        Matrix<type> operator+(const Matrix<type> &m);
+        Matrix<type> operator-(const Matrix<type> &m);
+        Matrix<type> operator*(const Matrix<type> &m);
+        Matrix<type> operator*(const type &scalar);
+        Matrix<type> operator=(const Matrix<type> &m);
 
         /* Identity matrix */
         Matrix<type> identity(const int &n);

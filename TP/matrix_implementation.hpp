@@ -5,10 +5,17 @@
 #include <iostream>
 #include <random>
 
+/* This is a regular constructor that creates a new matrix with specified dimensions. Ex: Matrix<m> m(3,4) creates a 3x4 matrix*/
 template <typename type>
 Matrix<type>::Matrix(const int &rows, const int &cols) : _rows(rows), _cols(cols)
 {
-    this.data = new type[_rows * _cols]; // ths is used isnetad of Malloc, in order to allocate the memory
+    
+    // Allocate 2D array properly
+    data = new type *[_rows];
+    for (int i = 0; i < _rows; i++)
+    {
+        data[i] = new type[_cols];
+    }
 
     // Initialize the matrix with zeros
     for (int i = 0; i < _rows; i++)
@@ -23,17 +30,22 @@ Matrix<type>::Matrix(const int &rows, const int &cols) : _rows(rows), _cols(cols
 template <typename type>
 Matrix<type>::Matrix(const Matrix<type> &m)
 {
-    /* Creating our new object that we will return */
-    _rows = m.get_rows(); // They are of the same type "Matrix" but they are different objects
-    _cols = m.get_cols();
-    data = new type[_rows * _cols]; // Allocate memory for the new matrix
+    _rows = m._rows;
+    _cols = m._cols;
 
-    // Copy the data from the matrix m
+    // Allocate 2D array
+    data = new type *[_rows];
+    for (int i = 0; i < _rows; i++)
+    {
+        data[i] = new type[_cols];
+    }
+
+    // Copy data
     for (int i = 0; i < _rows; i++)
     {
         for (int j = 0; j < _cols; j++)
         {
-            (*this)(i, j) = m(i, j);
+            (*this)(i,j) = m(i,j);
         }
     }
 }
@@ -41,7 +53,11 @@ Matrix<type>::Matrix(const Matrix<type> &m)
 template <typename type>
 Matrix<type>::~Matrix()
 {
-    delete[] data; // We delete the memory that we allocated
+    for (int i = 0; i < _rows; i++)
+    {
+        delete[] data[i];
+    }
+    delete[] data;
 }
 
 template <typename type>
@@ -56,14 +72,22 @@ int Matrix<type>::get_cols() const
     return _cols;
 }
 
+// Const version
 template <typename type>
-const type &Matrix<type>::operator()(const int &row, const int &col)
+const type &Matrix<type>::operator()(const int &row, const int &col) const
+{
+    return data[row][col];
+}
+
+// Non-const version
+template <typename type>
+type &Matrix<type>::operator()(const int &row, const int &col)
 {
     return data[row][col];
 }
 
 template <typename type>
-Matrix<type> Matrix<type>::operator+(const Matrix<type> &m) const
+Matrix<type> Matrix<type>::operator+(const Matrix<type> &m)
 {
     if (_rows != m._rows || _cols != m._cols)
     {
@@ -76,7 +100,7 @@ Matrix<type> Matrix<type>::operator+(const Matrix<type> &m) const
     {
         for (int j = 0; j < _cols; j++)
         {
-            result.data[i][j] = data[i][j] + m.data[i][j];
+            result(i, j) = (*this)(i, j) + m(i, j);
         }
     }
 
@@ -84,7 +108,7 @@ Matrix<type> Matrix<type>::operator+(const Matrix<type> &m) const
 }
 
 template <typename type>
-Matrix<type> Matrix<type>::operator-(const Matrix<type> &m) const
+Matrix<type> Matrix<type>::operator-(const Matrix<type> &m)
 {
     if (_rows != m._rows || _cols != m._cols)
     {
@@ -97,7 +121,7 @@ Matrix<type> Matrix<type>::operator-(const Matrix<type> &m) const
     {
         for (int j = 0; j < _cols; j++)
         {
-            result.data[i][j] = data[i][j] - m.data[i][j];
+            result(i, j) = (*this)(i, j) - m(i, j);
         }
     }
 
@@ -105,7 +129,7 @@ Matrix<type> Matrix<type>::operator-(const Matrix<type> &m) const
 }
 
 template <typename type>
-Matrix<type> Matrix<type>::operator*(const Matrix<type> &m) const
+Matrix<type> Matrix<type>::operator*(const Matrix<type> &m)
 {
     if (_cols != m._rows)
     {
@@ -118,10 +142,10 @@ Matrix<type> Matrix<type>::operator*(const Matrix<type> &m) const
     {
         for (int j = 0; j < m._cols; j++)
         {
-            result.data[i][j] = 0;
+            result(i, j) = 0;
             for (int k = 0; k < _cols; k++)
             {
-                result.data[i][j] += data[i][k] * m.data[k][j];
+                result(i, j) += (*this)(i, k) * m(k, j);
             }
         }
     }
@@ -130,7 +154,7 @@ Matrix<type> Matrix<type>::operator*(const Matrix<type> &m) const
 }
 
 template <typename type>
-Matrix<type> Matrix<type>::operator*(const type & scalar) const
+Matrix<type> Matrix<type>::operator*(const type &scalar)
 {
     Matrix<type> result(_rows, _cols);
 
@@ -138,7 +162,7 @@ Matrix<type> Matrix<type>::operator*(const type & scalar) const
     {
         for (int j = 0; j < _cols; j++)
         {
-            result.data[i][j] = data[i][j] * scalar;
+            result(i, j) = (*this)(i, j) * scalar;
         }
     }
 
@@ -159,11 +183,11 @@ Matrix<type> Matrix<type>::identity(const int &n)
 }
 
 template <typename type>
-Matrix<type> Matrix<type>::operator=(const Matrix<type> &m) const
+Matrix<type> Matrix<type>::operator=(const Matrix<type> &m)
 {
     int new_rows = m.get_rows();
     int new_cols = m.get_cols();
-    if(new_rows != _rows || new_cols != _cols)
+    if (new_rows != _rows || new_cols != _cols)
     {
         delete[] data;
         data = new type[new_rows * new_cols];
@@ -181,11 +205,10 @@ Matrix<type> Matrix<type>::operator=(const Matrix<type> &m) const
     }
 
     return *this;
-
 }
 
 template <typename type>
-std::ostream& operator<<(std::ostream &os, const Matrix<type> &m)
+std::ostream &operator<<(std::ostream &os, const Matrix<type> &m)
 {
     for (int i = 0; i < m.get_rows(); i++)
     {
@@ -198,6 +221,5 @@ std::ostream& operator<<(std::ostream &os, const Matrix<type> &m)
 
     return os;
 }
-
 
 #endif
