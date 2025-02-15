@@ -176,7 +176,7 @@ Matrix<type> Matrix<type>::identity(const int &n)
 
     for (int i = 0; i < n; i++)
     {
-        (*this)(i, i) = static_cast<type>(1);
+        result(i, i) = static_cast<type>(1);
     }
 
     return result;
@@ -185,25 +185,31 @@ Matrix<type> Matrix<type>::identity(const int &n)
 template <typename type>
 Matrix<type> Matrix<type>::operator=(const Matrix<type> &m)
 {
-    int new_rows = m.get_rows();
-    int new_cols = m.get_cols();
-    if (new_rows != _rows || new_cols != _cols)
+    if (this != &m) // Check for self-assignment
     {
+        // Delete old data
+        for (int i = 0; i < _rows; i++) {
+            delete[] data[i];
+        }
         delete[] data;
-        data = new type[new_rows * new_cols];
-    }
-    _rows = new_rows;
-    _cols = new_cols;
 
-    // Copy the data from the matrix m
-    for (int i = 0; i < _rows; i++)
-    {
-        for (int j = 0; j < _cols; j++)
-        {
-            (*this)(i, j) = m(i, j);
+        // Copy new dimensions
+        _rows = m.get_rows();
+        _cols = m.get_cols();
+
+        // Allocate new memory
+        data = new type*[_rows];
+        for (int i = 0; i < _rows; i++) {
+            data[i] = new type[_cols];
+        }
+
+        // Copy data
+        for (int i = 0; i < _rows; i++) {
+            for (int j = 0; j < _cols; j++) {
+                (*this)(i, j) = m(i, j);
+            }
         }
     }
-
     return *this;
 }
 
@@ -220,6 +226,60 @@ std::ostream &operator<<(std::ostream &os, const Matrix<type> &m)
     }
 
     return os;
+}
+
+template <typename type>
+Vector<type> Vector<type>::product_scalar(const type &scalar)
+{
+    Vector<type> result(this->get_rows()); // we can also use Matrix<type>::get_rows()
+
+    for (int i = 0; i < this->get_rows(); i++) {
+        result[i] = (*this)[i] * scalar;
+    }
+
+    return result;
+}
+
+template <typename type>
+Vector<type> Vector<type>::cross_product(const Vector<type> &v)
+{
+    if (this->get_rows()!= 3 || v.get_rows()!= 3) {
+        throw std::invalid_argument("Both vectors must have 3 dimensions");
+    }
+
+    Vector<type> result(3);
+
+    result[0] = (*this)[1] * v[2] - (*this)[2] * v[1];
+    result[1] = (*this)[2] * v[0] - (*this)[0] * v[2];
+    result[2] = (*this)[0] * v[1] - (*this)[1] * v[0];
+
+    return result;
+}
+
+template <typename type>
+type &Vector<type>::operator[](const int &index)
+{
+    return (*this)(index, 0); // We only have one collumn here
+}
+
+template <typename type>
+const type& Vector<type>::operator[](const int &index) const
+{
+    return (*this)(index, 0);
+}
+
+template <typename type>
+Matrix<type> Matrix<type>::transpose()
+{
+    Matrix<type> result(get_cols(), get_rows());
+
+    for (int i = 0; i < get_rows(); i++) {
+        for (int j = 0; j < get_cols(); j++) {
+            result(j, i) = (*this)(i, j);
+        }
+    }
+
+    return result;
 }
 
 #endif

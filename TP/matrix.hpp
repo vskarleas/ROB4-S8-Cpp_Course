@@ -34,6 +34,10 @@ class Matrix
         Matrix<type> operator*(const Matrix<type> &m);
         Matrix<type> operator*(const type &scalar);
         Matrix<type> operator=(const Matrix<type> &m);
+        Matrix<type> transpose(); // Transposition of the matrix
+
+        /* Matrix * vector product */
+        
 
         /* Identity matrix */
         Matrix<type> identity(const int &n);
@@ -43,6 +47,20 @@ class Matrix
 template<typename type>
 std::ostream& operator<<(std::ostream &os, const Matrix<type> &m); // We overload the operator << to print the matrix
 
+template<typename type>
+class Vector: public Matrix<type> // public inheritance specifier
+{    
+    // Setting _cols to 1 for a vector
+    public:
+        Vector(const int &rows) : Matrix<type>(rows, 1){}; // Constructor (everything initialised to zero)
+
+        Vector<type> product_scalar(const type &scalar); // Scalar product
+        Vector<type> cross_product(const Vector<type> &v); // Cross product
+
+        type& operator[](const int &index); // Overloading [] operator for read/write access
+        const type& operator[](const int &index) const;
+
+};
 
 #include "matrix_implementation.hpp" // C'est une classe qui est template, donc on peut pas compiler sans l'implementation
 # endif

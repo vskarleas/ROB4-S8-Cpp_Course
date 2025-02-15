@@ -66,6 +66,55 @@ int main() {
         Matrix<int> m5(2, 3);
         m5 = m1;
         cout << "m5:\n" << m5 << endl;
+
+        // Test matrix transpose
+        cout << "Testing matrix transpose (m1^T):" << endl;
+        cout << "m1:\n" << m1 << endl;
+        cout << "m1^T:\n" << m1.transpose() << endl;
+
+        // Test vector constructor
+        cout << "Creating vector v1 (5x1)..." << endl;
+        Vector<int> v1(5);
+        cout << "v1:\n" << v1 << endl;
+
+        // Filling out vector v1
+        cout << "Filling out vector v1..." << endl;
+        for(int i = 0; i < v1.get_rows(); i++) {
+            v1[i] = i;
+        }
+        cout << "v1:\n" << v1 << endl;
+
+        // Test vector product_scalar
+        cout << "Testing vector scalar product (v1 * 2):" << endl;
+        cout << "v1 * 2:\n" << v1.product_scalar(2) << endl;
+
+        // Test vector corss_product for 3x1 vectors
+        cout << "Creating 3x1 vectors v2 and v3..." << endl;
+        Vector<int> v2(3);
+        Vector<int> v3(3);
+
+        // Set values for v2 and v3
+        cout << "Setting values for v2 and v3..." << endl;
+        for(int i = 0; i < v2.get_rows(); i++) {
+            v2[i] = i;
+            v3[i] = i + 1;
+        }
+
+        cout << "v2:\n" << v2 << endl;
+        cout << "v3:\n" << v3 << endl;
+        cout << "v2 x v3:\n" << v2.cross_product(v3) << endl;
+        
+        // Test vector read/write access
+        cout << "Testing vector read/write access (v1[0] = 5):" << endl;
+        cout << "v1[0] before: " << v1[0] << endl;
+        v1[0] = 5;
+        cout << "v1[0] after: " << v1[0] << endl;
+
+        // Test vector cross_product with false size
+        cout << "Testing vector cross product (v1 x v1):" << endl;
+        cout << "v1 x v1:\n" << v1.cross_product(v1) << endl;
+        
+        
         
         cout << "All tests completed successfully!" << endl;
         
