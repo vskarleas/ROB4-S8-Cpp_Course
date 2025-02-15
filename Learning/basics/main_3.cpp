@@ -1,9 +1,11 @@
+/* TERMINAL OUTPUT (PRINTING) */
+
 #include <iostream>
 
 int main(int argc, char *argv[])
 {
-    std::cout << "Hello, World !" << std::endl; // standard output
-
+    std::cout << "Hello, World !" << "\nHow are you ?" << std::endl; // standard output. ENDL is doing a new line and we flash
+    std::cout << "\tBye!\n"; // tabulation character
     std::cerr << "Error message" << std::endl; // standard error
 
     std::clog << "Log message" << std::endl; // standard log
