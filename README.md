@@ -4,15 +4,15 @@
 
 ---
 
-## English Version
+## English
 
-### 🚀 Course Overview
+### Course
 
 This repository contains materials for the C++ Programming course (ROB4-S8), focusing on modern C++ concepts and best practices for engineering applications. The course is designed to build strong programming fundamentals with emphasis on object-oriented design, functional programming paradigms, and software development tools essential for robotics and embedded systems.
 
 C++ remains a critical language in high-performance computing, robotics, game development, and system programming due to its efficiency, direct hardware access, and powerful abstraction capabilities. This course provides both theoretical foundations and practical implementation techniques.
 
-### 📚 Prerequisites
+### Prerequisites
 
 To make the most of this course, students should have:
 - Basic programming experience in any language
@@ -20,7 +20,7 @@ To make the most of this course, students should have:
 - Understanding of algorithms and data structures
 - Access to a C++ development environment
 
-### 📘 Course Content
+### Content
 
 #### Object-Oriented Programming
 - Classes and objects
@@ -29,14 +29,14 @@ To make the most of this course, students should have:
 - Virtual functions and runtime polymorphism
 - Multiple inheritance and diamond problem
 
-#### Modern C++ Features
+#### Modern C++ features
 - Move semantics and rvalue references
 - Smart pointers (unique_ptr, shared_ptr, weak_ptr)
 - Lambda functions and closures
 - Range-based for loops
 - Auto type deduction
 
-#### Function Objects and Functional Programming
+#### Function objects and functional programming
 - Functors (function objects)
 - Standard library function objects
 - Lambda expressions as alternatives to functors
@@ -50,7 +50,7 @@ To make the most of this course, students should have:
 - String handling
 - I/O streams
 
-#### Memory Management
+#### Memory management
 - Stack vs heap allocation
 - RAII (Resource Acquisition Is Initialization)
 - Custom memory management
@@ -63,13 +63,13 @@ To make the most of this course, students should have:
 - Unit testing with CTest
 - Continuous integration practices
 
-#### Design Patterns in C++
+#### Design patterns in C++
 - Creational patterns (Factory, Singleton)
 - Structural patterns (Adapter, Composite)
 - Behavioral patterns (Observer, Strategy)
 - Implementation techniques specific to C++
 
-### 🛠️ Setup and Installation
+### Setup and installation
 
 1. Clone this repository:
 ```bash
@@ -82,7 +82,7 @@ cd ROB4-S8-Cpp_Course
    - CMake (version 3.15 or higher)
    - Make (or Ninja build system)
 
-### 📖 Additional Resources
+### Additional resources
 
 - [C++ Reference](https://en.cppreference.com/)
 - [Effective Modern C++](https://www.oreilly.com/library/view/effective-modern-c/9781491908419/) by Scott Meyers
@@ -90,7 +90,7 @@ cd ROB4-S8-Cpp_Course
 - [CMake Documentation](https://cmake.org/documentation/)
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 
-### 📝 License Information
+### License
 
 **ROB4-S8-Cpp_Course** © 2025 by **Vasileios Filippos Skarleas** is licensed under [MIT License](https://opensource.org/licenses/MIT).
 
@@ -100,13 +100,13 @@ This repository may include content that is not the property of **Vasileios Fili
 
 ## French Version
 
-### 🚀 Aperçu du Cours
+### Aperçu du Cours
 
 Ce dépôt contient les matériaux pour le cours de Programmation C++ (ROB4-S8), se concentrant sur les concepts modernes du C++ et les meilleures pratiques pour les applications d'ingénierie. Le cours est conçu pour construire de solides fondamentaux de programmation avec un accent sur la conception orientée objet, les paradigmes de programmation fonctionnelle, et les outils de développement logiciel essentiels pour la robotique et les systèmes embarqués.
 
 Le C++ reste un langage critique dans le calcul haute performance, la robotique, le développement de jeux, et la programmation système en raison de son efficacité, son accès direct au matériel, et ses puissantes capacités d'abstraction. Ce cours fournit à la fois des fondements théoriques et des techniques d'implémentation pratiques.
 
-### 📚 Prérequis
+### Prérequis
 
 Pour tirer le meilleur parti de ce cours, les étudiants devraient avoir:
 - Une expérience de base en programmation dans n'importe quel langage
@@ -114,7 +114,7 @@ Pour tirer le meilleur parti de ce cours, les étudiants devraient avoir:
 - Une compréhension des algorithmes et des structures de données
 - Accès à un environnement de développement C++
 
-### 📘 Contenu du Cours
+### Contenu du cours
 
 #### Programmation Orientée Objet
 - Classes et objets
@@ -163,7 +163,7 @@ Pour tirer le meilleur parti de ce cours, les étudiants devraient avoir:
 - Patterns comportementaux (Observer, Strategy)
 - Techniques d'implémentation spécifiques au C++
 
-### 🛠️ Configuration et Installation
+### Configuration et installation
 
 1. Clonez ce dépôt:
 ```bash
@@ -177,7 +177,7 @@ cd ROB4-S8-Cpp_Course
    - Make (ou le système de build Ninja)
 
 
-### 📖 Ressources Supplémentaires
+### Ressources supplémentaires
 
 - [Référence C++](https://en.cppreference.com/)
 - [Effective Modern C++](https://www.oreilly.com/library/view/effective-modern-c/9781491908419/) par Scott Meyers
@@ -185,7 +185,7 @@ cd ROB4-S8-Cpp_Course
 - [Documentation CMake](https://cmake.org/documentation/)
 - [Guide de Style C++ Google](https://google.github.io/styleguide/cppguide.html)
 
-### 📝 Informations de Licence
+### Informations de licence
 
 **ROB4-S8-Cpp_Course** © 2025 par **Vasileios Filippos Skarleas** est sous licence [MIT License](https://opensource.org/licenses/MIT).
 
