@@ -90,12 +90,6 @@ cd ROB4-S8-Cpp_Course
 - [CMake Documentation](https://cmake.org/documentation/)
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 
-### License
-
-**ROB4-S8-Cpp_Course** © 2025 by **Vasileios Filippos Skarleas** is licensed under [MIT License](https://opensource.org/licenses/MIT).
-
-This repository may include content that is not the property of **Vasileios Filippos Skarleas** and is subject to copyright and other licenses from their respective owners.
-
 ---
 
 ## French Version
@@ -185,8 +179,8 @@ cd ROB4-S8-Cpp_Course
 - [Documentation CMake](https://cmake.org/documentation/)
 - [Guide de Style C++ Google](https://google.github.io/styleguide/cppguide.html)
 
-### Informations de licence
+---
 
-**ROB4-S8-Cpp_Course** © 2025 par **Vasileios Filippos Skarleas** est sous licence [MIT License](https://opensource.org/licenses/MIT).
+ROB4-S8-Cpp_Course © 2025 by Vasileios Filippos Skarleas is licensed under [MIT License](https://opensource.org/licenses/MIT).
 
-Ce dépôt peut inclure du contenu qui n'est pas la propriété de **Vasileios Filippos Skarleas** et est soumis au droit d'auteur et à d'autres licences de leurs propriétaires respectifs.
+This repository may include content that is not the property of the authors and is subject to copyright and other licenses from their respective owners.
